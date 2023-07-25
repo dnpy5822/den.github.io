@@ -1,0 +1,180 @@
+@import 'src/global/variables';
+@import 'src/global/mixins';
+
+/* css reset start */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+  font-size: 16px;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+* {
+  font-family: "PingFang HK", PingFang-HK, PingFangHK, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif !important;
+}
+/* css reset end */
+
+@mixin grid-column {
+  display: grid;
+  grid-template-columns: 42px minmax(170px, auto) minmax(110px, auto) 89px 107px 158px 143px;
+  background: #ffffff;
+  color: #000000c7;
+  font-size: 0.875rem;
+  line-height: 1.125rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+:host {
+  display: block;
+  width: 100%;
+  container: container / inline-size;
+}
+
+.container {
+  min-width: 310px;
+  font-size: 16px;
+  margin-bottom: 16px;
+  background-color: white;
+  padding: 24px 0;
+  width: 100%;
+}
+
+.loading {
+  @include flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  font-size: 24px;
+}
+
+.scroll-wrapper {
+  overflow-x: scroll;
+  -ms-overflow-style: none; /* IE 11 */
+  scrollbar-width: none; /* Firefox 64 */
+}
+
+.scroll-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.table {
+  @include flex;
+  flex-direction: column;
+  margin: 0 12px 16px;
+  min-width: min-content;
+  max-width: 100%;
+  padding-right: 8px;
+}
+
+.table-header {
+  @include grid-column;
+  background: transparent;
+  margin-bottom: 8px;
+  border-bottom: none;
+  padding: 0 16px;
+}
+
+.table-head {
+  font-size: 0.75rem;
+
+  &:first-child {
+    padding-right: 0;
+    justify-self: center;
+  }
+
+  &:last-child {
+    padding-right: 0 !important;
+  }
+}
+
+.table-body {
+  border-radius: $border-radius;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  min-width: min-content;
+  max-width: 100%;
+  padding: 0 16px;
+}
+
+.table-row {
+  @include grid-column;
+
+  &:first-child {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  &:last-child {
+    border-bottom: none;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+}
+
+.table-cell {
+  font-weight: 600;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  justify-content: start;
+  padding-top: 0px;
+  padding-right: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+
+  &:first-child {
+    padding-right: 0;
+    border-bottom-width: 0px;
+  }
+
+  &:last-child {
+    padding-right: 0;
+  }
+}
+
+@container container (min-width: 1024px) {
+  .table {
+    padding-right: 0;
+  }
+}
